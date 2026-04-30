@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/EcommerceAppDatabase
+    username: admin
+    password: abc123
+  application:
+    name: ecommerce-backend
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+server:
+  port: 8080
+jwt:
+  signerKey: "bf210c7205ff6c14e013e290d5f276b750e23e747d8eba5136b734686677090b"
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

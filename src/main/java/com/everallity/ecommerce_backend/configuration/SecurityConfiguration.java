@@ -1,0 +1,77 @@
+package com.everallity.ecommerce_backend.configuration;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.web.SecurityFilterChain;
+
+import javax.crypto.spec.SecretKeySpec;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity
+public class SecurityConfiguration {
+
+    private final String[] PUBLIC_ENDPOINTS = {"/auth/signup", "/auth/login"};
+    @Value("${jwt.signerKey}")
+    private String SECRET_KEY;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity, JwtAuthenticationConverter jwtAuthenticationConverter, JwtDecoder jwtDecoder) throws Exception {
+        httpSecurity.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
+                authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS).permitAll()
+                        .requestMatchers(HttpMethod.GET, "/account/***").authenticated()
+                        .anyRequest().authenticated());
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+
+        httpSecurity.oauth2ResourceServer(httpSecurityOAuth2ResourceServerConfigurer ->
+                httpSecurityOAuth2ResourceServerConfigurer.jwt(jwtConfigurer ->
+                        jwtConfigurer.decoder(jwtDecoder)
+                                .jwtAuthenticationConverter(jwtAuthenticationConverter)
+                )
+                        .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                        .accessDeniedHandler(new CustomAccessDeniedHandler())
+        );
+
+        return httpSecurity.build();
+    }
+
+    @Bean
+    JwtAuthenticationConverter jwtAuthenticationConverter() {
+        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwt -> {
+            List<String> roles = jwt.getClaimAsStringList("scope");
+            if (roles.isEmpty()) return List.of();
+            return roles.stream().map(role -> "ROLE_"+role).map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
+        });
+        return jwtAuthenticationConverter;
+    }
+
+    @Bean
+    JwtDecoder jwtDecoder() {
+        SecretKeySpec secretKeySpec = new SecretKeySpec(SECRET_KEY.getBytes(), "HS512");
+        return NimbusJwtDecoder.withSecretKey(
+                secretKeySpec
+        ).macAlgorithm(MacAlgorithm.HS512).build();
+    }
+}
