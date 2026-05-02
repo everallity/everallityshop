@@ -13,8 +13,11 @@ public class AccountRequestDto {
     @PasswordStrengthConstraint(min = 8, message = "PASSWORD_LENGTH_INVALID")
     private String password;
 
-    public AccountRequestDto(String userName, String password) {
-        this.email = userName;
+    public AccountRequestDto() {
+
+    }
+    public AccountRequestDto(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
