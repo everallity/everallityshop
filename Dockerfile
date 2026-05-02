@@ -1,10 +1,13 @@
-FROM maven:3.9.15-eclipse-temurin-21 AS builder
+# ---------- BUILD STAGE ----------
+FROM gradle:8.14.3-jdk21 AS builder
 WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
+COPY build.gradle settings.gradle gradlew ./
+COPY gradle ./gradle
+RUN chmod +x gradlew
+RUN ./gradlew dependencies
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN ./gradlew bootJar
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=builder /app/build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
