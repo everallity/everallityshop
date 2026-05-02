@@ -1,7 +1,7 @@
 package com.everallity.ecommerce_backend.configuration;
 
-import com.everallity.ecommerce_backend.model.Account;
-import com.everallity.ecommerce_backend.model.Role;
+import com.everallity.ecommerce_backend.entity.Account;
+import com.everallity.ecommerce_backend.entity.Role;
 import com.everallity.ecommerce_backend.repository.AccountRepository;
 import com.everallity.ecommerce_backend.service.AccountService;
 import org.springframework.boot.ApplicationRunner;

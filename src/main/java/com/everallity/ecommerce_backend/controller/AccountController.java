@@ -2,9 +2,9 @@ package com.everallity.ecommerce_backend.controller;
 
 import com.everallity.ecommerce_backend.mapper.AccountRequestDtoMapper;
 import com.everallity.ecommerce_backend.mapper.AccountResponseDtoMapper;
-import com.everallity.ecommerce_backend.model.Account;
-import com.everallity.ecommerce_backend.model.dto.request.AccountRequestDto;
-import com.everallity.ecommerce_backend.model.dto.response.AccountResponseDto;
+import com.everallity.ecommerce_backend.entity.Account;
+import com.everallity.ecommerce_backend.entity.dto.request.AccountRequestDto;
+import com.everallity.ecommerce_backend.entity.dto.response.AccountResponseDto;
 import com.everallity.ecommerce_backend.service.AccountService;
 import jakarta.validation.Valid;
 import org.springframework.data.jpa.repository.Modifying;

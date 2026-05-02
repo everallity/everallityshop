@@ -1,8 +1,8 @@
 package com.everallity.ecommerce_backend.mapper;
 
-import com.everallity.ecommerce_backend.model.Account;
-import com.everallity.ecommerce_backend.model.Role;
-import com.everallity.ecommerce_backend.model.dto.response.AccountResponseDto;
+import com.everallity.ecommerce_backend.entity.Account;
+import com.everallity.ecommerce_backend.entity.Role;
+import com.everallity.ecommerce_backend.entity.dto.response.AccountResponseDto;
 
 import java.util.stream.Collectors;
 

@@ -1,6 +1,6 @@
 package com.everallity.ecommerce_backend.repository;
 
-import com.everallity.ecommerce_backend.model.Role;
+import com.everallity.ecommerce_backend.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

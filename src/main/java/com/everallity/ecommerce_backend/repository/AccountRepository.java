@@ -1,6 +1,6 @@
 package com.everallity.ecommerce_backend.repository;
 
-import com.everallity.ecommerce_backend.model.Account;
+import com.everallity.ecommerce_backend.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

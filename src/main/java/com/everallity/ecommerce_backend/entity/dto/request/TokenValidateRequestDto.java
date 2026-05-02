@@ -1,4 +1,4 @@
-package com.everallity.ecommerce_backend.model.dto.request;
+package com.everallity.ecommerce_backend.entity.dto.request;
 
 public class TokenValidateRequestDto {
     private String token;

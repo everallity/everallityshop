@@ -2,7 +2,7 @@ package com.everallity.ecommerce_backend.service.role;
 
 import com.everallity.ecommerce_backend.constant.ErrorCode;
 import com.everallity.ecommerce_backend.exception.AppException;
-import com.everallity.ecommerce_backend.model.Role;
+import com.everallity.ecommerce_backend.entity.Role;
 import com.everallity.ecommerce_backend.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 

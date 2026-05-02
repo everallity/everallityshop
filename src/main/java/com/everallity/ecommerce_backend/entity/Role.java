@@ -1,4 +1,4 @@
-package com.everallity.ecommerce_backend.model;
+package com.everallity.ecommerce_backend.entity;
 
 import jakarta.persistence.*;
 

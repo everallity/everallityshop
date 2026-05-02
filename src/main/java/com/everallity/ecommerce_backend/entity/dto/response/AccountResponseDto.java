@@ -1,6 +1,4 @@
-package com.everallity.ecommerce_backend.model.dto.response;
-
-import com.everallity.ecommerce_backend.model.Role;
+package com.everallity.ecommerce_backend.entity.dto.response;
 
 import java.util.Set;
 

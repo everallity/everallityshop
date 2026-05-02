@@ -1,9 +1,9 @@
 package com.everallity.ecommerce_backend.service.jwt;
 
-import com.everallity.ecommerce_backend.model.Account;
-import com.everallity.ecommerce_backend.model.Role;
-import com.everallity.ecommerce_backend.model.dto.request.TokenValidateRequestDto;
-import com.everallity.ecommerce_backend.model.dto.response.TokenValidateResponseDto;
+import com.everallity.ecommerce_backend.entity.Account;
+import com.everallity.ecommerce_backend.entity.Role;
+import com.everallity.ecommerce_backend.entity.dto.request.TokenValidateRequestDto;
+import com.everallity.ecommerce_backend.entity.dto.response.TokenValidateResponseDto;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.StringJoiner;
 

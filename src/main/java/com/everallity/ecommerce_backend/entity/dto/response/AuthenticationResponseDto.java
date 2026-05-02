@@ -1,4 +1,4 @@
-package com.everallity.ecommerce_backend.model.dto.response;
+package com.everallity.ecommerce_backend.entity.dto.response;
 
 import java.util.Set;
 

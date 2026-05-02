@@ -1,6 +1,5 @@
-package com.everallity.ecommerce_backend.model.dto.request;
+package com.everallity.ecommerce_backend.entity.dto.request;
 
-import com.everallity.ecommerce_backend.validator.PasswordValidator;
 import com.everallity.ecommerce_backend.validator.annotation.PasswordStrengthConstraint;
 import jakarta.validation.Constraint;
 import jakarta.validation.constraints.Email;

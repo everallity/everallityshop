@@ -1,8 +1,8 @@
 package com.everallity.ecommerce_backend.service.jwt;
 
-import com.everallity.ecommerce_backend.model.Account;
-import com.everallity.ecommerce_backend.model.dto.request.TokenValidateRequestDto;
-import com.everallity.ecommerce_backend.model.dto.response.TokenValidateResponseDto;
+import com.everallity.ecommerce_backend.entity.Account;
+import com.everallity.ecommerce_backend.entity.dto.request.TokenValidateRequestDto;
+import com.everallity.ecommerce_backend.entity.dto.response.TokenValidateResponseDto;
 import com.nimbusds.jose.JOSEException;
 
 public interface JwtServiceInterface {
