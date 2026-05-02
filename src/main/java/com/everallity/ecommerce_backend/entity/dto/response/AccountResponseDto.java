@@ -3,13 +3,13 @@ package com.everallity.ecommerce_backend.entity.dto.response;
 import java.util.Set;
 
 public class AccountResponseDto {
-    private long id;
+    private long userId;
     private String email;
     private String password;
     private Set<String> roleSet;
 
-    public AccountResponseDto(long id, String email, String password, Set<String> roleSet) {
-        this.id = id;
+    public AccountResponseDto(long userId, String email, String password, Set<String> roleSet) {
+        this.userId = userId;
         this.email = email;
         this.password = password;
         this.roleSet = roleSet;
@@ -26,12 +26,12 @@ public class AccountResponseDto {
     public AccountResponseDto() {
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

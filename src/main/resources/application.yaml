@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/EcommerceAppDatabase
-    username: admin
-    password: abc123
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
   application:
     name: ecommerce-backend
   jpa:
@@ -10,9 +10,9 @@ spring:
       ddl-auto: update
       show-sql: true
 server:
-  port: 8081
+  port: ${PORT:8081}
 jwt:
-  signerKey: "bf210c7205ff6c14e013e290d5f276b750e23e747d8eba5136b734686677090b"
+  signerKey: ${JWT_SECRET}
 logging:
   level:
     org:

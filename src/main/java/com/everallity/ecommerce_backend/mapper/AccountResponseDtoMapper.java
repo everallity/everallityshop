@@ -11,7 +11,7 @@ public class AccountResponseDtoMapper {
         AccountResponseDto accountResponseDto = new AccountResponseDto();
         accountResponseDto.setPassword(account.getPasswordHash());
         accountResponseDto.setEmail(account.getEmail());
-        accountResponseDto.setId(account.getId());
+        accountResponseDto.setUserId(account.getId());
         accountResponseDto.setRoleSet(account.getRoleSet()
                 .stream()
                 .map(Role::getName)
