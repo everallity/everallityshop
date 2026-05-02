@@ -10,7 +10,7 @@ spring:
       ddl-auto: update
       show-sql: true
 server:
-  port: 8080
+  port: 8081
 jwt:
   signerKey: "bf210c7205ff6c14e013e290d5f276b750e23e747d8eba5136b734686677090b"
 logging:
@@ -18,3 +18,5 @@ logging:
     org:
       springframework:
         security: DEBUG
+      org.hibernate.SQL: DEBUG
+      org.hibernate.type.descriptor.sql: TRACE
